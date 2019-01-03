@@ -1,10 +1,11 @@
 import React from 'react'
 import './app.css'
+import Timer from './timer'
 
 function App() {
 	return (
 		<div>
-			<div> Empty </div>
+			<Timer />
 		</div>
 	)
 }

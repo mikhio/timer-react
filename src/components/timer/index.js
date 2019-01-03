@@ -36,8 +36,8 @@ class Timer extends React.Component {
 				<h1> My timer </h1>
 				<div>{zero(hours)}:{zero(min)}:{zero(sec)}.{mSec}</div>
 				<Buttons
+					count={this.state.count} 
 					onPressStart={this.handleStart}
-					onPressStop={this.handleStop}
 					onPressClear={this.handleClear}
 				/>
 			</div>
@@ -49,11 +49,7 @@ class Timer extends React.Component {
 	}
 
 	handleStart = () => {
-		this.setState({ count: true })
-	}
-
-	handleStop = () => {
-		this.setState({ count: false })
+		this.setState({ count: !this.state.count })
 	}
 }
 

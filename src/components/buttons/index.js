@@ -2,13 +2,12 @@ import React from 'react'
 
 function Buttons({
 	onPressStart = () => {},
-	onPressStop = () => {},
 	onPressClear = () => {},
+	count,
 }) {
 	return (
 		<div>
-			<button onClick={() => onPressStart('s')}>start</button>
-			<button onClick={() => onPressStop('t')}>stop</button>
+			<button onClick={() => onPressStart('s')}>{count ? 'stop' : 'start'}</button>
 			<button onClick={() => onPressClear('c')}>clear</button>
 		</div>
 	)

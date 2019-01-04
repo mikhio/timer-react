@@ -1,9 +1,24 @@
 import React from 'react'
 import Buttons from '../buttons'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
+
+
+const styles = theme => ({
+	root: {
+   		...theme.mixins.gutters(),
+   		paddingTop: theme.spacing.unit * 2,
+   		paddingBottom: theme.spacing.unit * 2,
+   		width: 200,
+   		margin: '20px auto',
+  	},
+})
 
 const zero = (dig) => ('0' + dig).slice(-2)
 
 class Timer extends React.Component {
+
 	constructor(props) {
 		super(props)
 
@@ -31,15 +46,28 @@ class Timer extends React.Component {
 		const sec = mSec / 10 | 0
 		mSec = mSec - sec * 10
 
+		const { classes } = this.props
 		return (
 			<div>
-				<h1> My timer </h1>
-				<div>{zero(hours)}:{zero(min)}:{zero(sec)}.{mSec}</div>
-				<Buttons
-					count={this.state.count} 
-					onPressStart={this.handleStart}
-					onPressClear={this.handleClear}
-				/>
+				<Paper className={classes.root} elevation={1}>
+					<Typography 
+						variant="h4" 
+						component="h3"
+					> 
+						My timer 
+					</Typography>
+					<Typography 
+						variant="h5" 
+						component="h3"
+					>
+						{zero(hours)}:{zero(min)}:{zero(sec)}.{mSec}
+					</Typography>				
+					<Buttons
+						count={this.state.count} 
+						onPressStart={this.handleStart}
+						onPressClear={this.handleClear}
+					/>
+				</Paper>
 			</div>
 		)
 	}
@@ -53,4 +81,4 @@ class Timer extends React.Component {
 	}
 }
 
-export default Timer
+export default withStyles(styles)(Timer);
